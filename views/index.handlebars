@@ -1,0 +1,80 @@
+<div class="jumbotron text-center">
+			<h1> My To Do Items </h1>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+					<h2 id="sub-heading"> What have you accomplished today? </h2>
+					<br>
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="panel">
+						<h1 class="text-center"> Remaining Items </h1>
+						<hr>
+						<table>
+							<thead>
+								<tr>
+									<th id="action-col"> Action </th>
+									<th> Date Added </th>
+									<th> To-do Item </th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each incompletedItems}}
+									<tr>
+										<td> <i class="glyphicon glyphicon-ok" aria-hidden="true"></i> | <i class="glyphicon glyphicon-trash" aria-hidden="true"></i> </td>
+										<td> {{this.date}} </td>
+										<td> {{this.desc}} </td>
+									</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="panel">
+						<h1 class="text-center"> Completed Items </h1>
+						<hr>
+						<!-- no items table 
+						<table>
+							<thead>
+								<tr>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> There are no items to display </td>
+								</tr>
+							</tbody>
+						</table>-->
+
+						<table>
+							<thead>
+								<tr>
+									<th> Completed On </th>
+									<th> To-do Item </th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each completedItems}}
+								<tr>
+									<td> {{this.date}} </td>
+									<td> {{this.desc}} </td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-lg-5 item-input col-centered">
+					<form method="POST" action="/add" class="form-group">
+						<input type="text" class="form-control" name="newItem" placeholder="Add New Item">
+						<input type="submit" class="btn btn=primary">
+					</form>
+				</div>
+			</div>
+		</div>

@@ -1,0 +1,75 @@
+body {
+	background-color: #494e6b;
+}
+
+.jumbotron {
+	background-color: #985e6d;
+	color: gainsboro;
+}
+
+.text-center {
+	text-align: center;
+}
+
+#sub-heading {
+	color: #4aa;
+}
+
+.panel {
+	padding: 0px 15px;
+}
+
+.panel h1 {
+	color: #5e5f61;
+}
+
+.col-centered {
+	float: none;
+	margin: 0 auto;
+}
+
+.item-input label {
+	color: gainsboro;
+}
+
+.item-input input[type="text"] {
+	margin-bottom: 7px;
+}
+
+table {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+table td {
+	padding: 5px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+table th {
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	color: #4aa;
+}
+
+#action-col {
+	width: 83px;
+}
+
+.glyphicon {
+	padding: 0px 5px;
+}
+
+.glyphicon:hover {
+	cursor: pointer;
+}
+
+.glyphicon-ok {
+	color: #4484ce;
+}
+
+.glyphicon-trash {
+	color: #b82601;
+}
