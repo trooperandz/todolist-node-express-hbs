@@ -1,15 +1,11 @@
-var express = require('express')
-var path = require('path')
-var bodyParser = require('body-parser')
-var routes = require('./controllers/routes')
-var hbs = require('express-handlebars')
+var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
+var routes = require('./controllers/routes');
+var hbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 
-var app = express()
-
-// Configure app. Note: don't need to require ejs.  Express does this for us
-//app.set('view engine', 'ejs')
-//app.set('views', path.join(__dirname, 'views'))
+var app = express();
 
 app.set('view engine', 'handlebars');
 app.engine('handlebars', hbs({ defaultLayout: 'main' }));
@@ -17,10 +13,10 @@ app.engine('handlebars', hbs({ defaultLayout: 'main' }));
 // Check out passport authentication
 
 // Provide access to public folder contents
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Use middleware
-app.use(bodyParser())
+app.use(bodyParser());
 
 // Middleware for error handling.  If error, serve the error page.
 app.use(function(err, req, res, next) {
@@ -38,15 +34,3 @@ app.listen(port, function(err) {
 	if(err) throw err;
 	console.log("App listening on port " + port)
 })
-
-/*
-	app.get()
-	app.post()
-	app.put()
-	app.del()
-
-	res.set() : set response headers
-	res.send(): give it something and it stringify's it
-	res.json(): stringify js value
-	res.render(): uniform view engine, 
-*/
