@@ -1,14 +1,12 @@
 <div class="jumbotron text-center">
 			<h1> My To Do Items </h1>
 		</div>
-
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-12 text-center">
 					<h2 id="sub-heading"> What have you accomplished today? </h2>
 					<br>
 				</div>
-
 				<div class="col-sm-12 col-md-6 col-lg-6">
 					<div class="panel">
 						<h1 class="text-center"> Remaining Items </h1>
@@ -24,7 +22,14 @@
 							<tbody>
 								{{#each incompletedItems}}
 									<tr>
-										<td> <i class="glyphicon glyphicon-ok" aria-hidden="true"></i> | <i class="glyphicon glyphicon-trash" aria-hidden="true"></i> </td>
+										<td> 
+											<a href="/complete-item/{{this.id}}">
+												<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+											</a> | 
+											<a href="/delete-item/{{this.id}}">
+												<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+											</a> 
+										</td>
 										<td> {{this.date}} </td>
 										<td> {{this.desc}} </td>
 									</tr>
@@ -69,6 +74,9 @@
 						</table>
 					</div>
 				</div>
+
+				<table>
+				</table>
 
 				<div class="col-sm-12 col-md-6 col-lg-5 item-input col-centered">
 					<form method="POST" action="/add" class="form-group">

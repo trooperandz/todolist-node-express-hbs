@@ -1,7 +1,6 @@
 var express = require('express')
 var router  = express.Router()
 var tasks   = require('../models/tasks')
-var orm     = require('../config/orm')
 
 router.get('/', function(req, res) {
 	tasks.getAll(function(dataObj) {
@@ -20,6 +19,24 @@ router.post('/add', function(req, res) {
 		console.log(newItem + 'was added successfully');
 	})
 	// Redirect to the root (i.e. reload the page)
+	res.redirect('/')
+})
+
+// If the trask icon is selected, delete the item
+router.get('/delete-item/:id', function(req, res) {
+	var id = req.params.id;
+	tasks.deleteTask(id, function(res) {
+		console.log('item with id ' + id + ' was removed')
+	})
+	res.redirect('/')
+})
+
+// If the task is marked as completed, update the completed value
+router.get('/complete-item/:id', function(req, res) {
+	var id = req.params.id;
+	tasks.updateTask(id, function(res) {
+		console.log('item with id ' + id + ' was marked as completed');
+	})
 	res.redirect('/')
 })
 

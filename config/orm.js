@@ -11,7 +11,7 @@ var tasks = {
 
 	insertNewTask: function(newItem, callback) {
 		//console.log('newItem in orm: ' + newItem);
-		var stmt = `INSERT INTO todo_list (todo_item, completed) VALUES(??, 0)`;
+		var stmt = 'INSERT INTO todo_list (todo_item, completed) VALUES(?, 0)';
 		conn.query(stmt, [newItem], function(err, res) {
 			console.log('newItem in query: ' + newItem);
 			if(err) throw err;
@@ -19,9 +19,9 @@ var tasks = {
 		})
 	},
 
-	updateTask: function(callback) {
-		var stmt = `UPDATE todo_list SET completed = ? WHERE id = ?`;
-		conn.query(stmt, function(err, res) {
+	updateTask: function(id, callback) {
+		var stmt = `UPDATE todo_list SET completed = 1 WHERE id = ?`;
+		conn.query(stmt, [id], function(err, res) {
 			if(err) throw err;
 			callback(res)
 		})

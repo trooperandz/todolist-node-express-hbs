@@ -1,12 +1,15 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var routes = require('./controllers/routes');
 var hbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 
 var app = express();
 
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
 app.set('view engine', 'handlebars');
 app.engine('handlebars', hbs({ defaultLayout: 'main' }));
 

@@ -28,6 +28,18 @@ var tasks = {
 		orm.insertNewTask(newItem, function(res) {
 			callback(res);
 		})
+	},
+
+	deleteTask: function(id, callback) {
+		orm.deleteTask(id, function(res) {
+			callback(res);
+		})
+	},
+
+	updateTask: function(id, callback) {
+		orm.updateTask(id, function(res) {
+			callback(res)
+		})
 	}
 }
 
