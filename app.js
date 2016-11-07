@@ -1,10 +1,9 @@
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var routes = require('./controllers/routes');
-var hbs = require('express-handlebars');
-var port = process.env.PORT || 3000;
+var express        = require('express'),
+    path           = require('path'),
+    bodyParser     = require('body-parser'),
+    methodOverride = require('method-override'),
+    routes         = require('./controllers/routes'),
+    hbs            = require('express-handlebars');
 
 var app = express();
 
@@ -12,8 +11,6 @@ var app = express();
 app.use(methodOverride('_method'));
 app.set('view engine', 'handlebars');
 app.engine('handlebars', hbs({ defaultLayout: 'main' }));
-
-// Check out passport authentication
 
 // Provide access to public folder contents
 app.use(express.static(path.join(__dirname, 'public')));
@@ -30,10 +27,11 @@ app.use(function(err, req, res, next) {
 	})
 })
 
-// Include routes. Note: if had app.use('/api', routes); then the root of the required object would be /api
+// Include routes
 app.use(routes);
 
-app.listen(port, function(err) {
+// Start the server
+app.listen(process.env.port || 3000, function(err) {
 	if(err) throw err;
 	console.log("App listening on port " + port)
 })
