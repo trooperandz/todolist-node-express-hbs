@@ -7,6 +7,8 @@ var express        = require('express'),
 
 var app = express();
 
+var PORT = 3000;
+
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'));
 app.set('view engine', 'handlebars');
@@ -31,7 +33,7 @@ app.use(function(err, req, res, next) {
 app.use(routes);
 
 // Start the server
-app.listen(process.env.port || 3000, function(err) {
+app.listen(process.env.PORT || PORT, function(err) {
 	if(err) throw err;
 	console.log("App listening on port " + port)
 })
