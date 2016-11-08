@@ -1,11 +1,15 @@
-var express        = require('express'),
-    path           = require('path'),
-    bodyParser     = require('body-parser'),
-    methodOverride = require('method-override'),
-    routes         = require('./controllers/routes'),
-    hbs            = require('express-handlebars');
+'use_strict';
 
-var app = express();
+const express        = require('express'),
+      path           = require('path'),
+      bodyParser     = require('body-parser'),
+      methodOverride = require('method-override'),
+      routes         = require('./controllers/routes'),
+      hbs            = require('express-handlebars');
+
+const app = express();
+
+const PORT = 3000;
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'));
@@ -31,7 +35,7 @@ app.use(function(err, req, res, next) {
 app.use(routes);
 
 // Start the server
-app.listen(process.env.PORT || 3000, function(err) {
+app.listen(process.env.PORT || PORT, function(err) {
 	if(err) throw err;
-	console.log("App listening on port " + port)
+	console.log("App listening on port " + PORT)
 })

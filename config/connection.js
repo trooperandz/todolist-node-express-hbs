@@ -1,7 +1,9 @@
-var mysql = require('mysql');
-var secret_keys = require('./secret_keys');
+'use_strict';
 
-var conn = mysql.createConnection({
+const mysql = require('mysql');
+const secret_keys = require('./secret_keys');
+
+const conn = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
 	user: 'root',

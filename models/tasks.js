@@ -1,46 +1,39 @@
-var orm = require('../config/orm')
-var moment = require('moment')
+'use_strict';
 
-var tasks = {
+/**
+ * Provide data models for views etc.
+ *
+ * @author Matthew Holland
+ */
+
+// Packages
+const moment = require('moment')
+
+// Modules
+const {getAllTasks} = require('../config/orm')
+
+const models = {
+	// Take all tasks, and place completed & incompleted in separate arrays. Format date for view.
 	getAll: function(callback) {
-		orm.getAllTasks(function(res) {
-			var completedArr   = [];
-			var incompletedArr = [];
+		getAllTasks(function(res) {
+			const completedArr   = [];
+			const incompletedArr = [];
 			res.forEach(function(obj, index) {
-				var id   = obj.id;
-				var date = moment(obj.createdAt).format('MM/DD/YYYY');
-				var desc = obj.todo_item;
-				var completed = obj.completed;
+				const id   = obj.id;
+				const date = moment(obj.createdAt).format('MM/DD/YYYY');
+				const desc = obj.todo_item;
+				const completed = obj.completed;
 				if(completed) {
-					completedArr.push({ id:id, date:date, desc: desc });
+					completedArr.push({ id, date, desc });
 				} else {
-					incompletedArr.push({ id:id, date:date, desc: desc });
+					incompletedArr.push({ id, date, desc });
 				}
 			})
-			var data = { completedArr:completedArr, incompletedArr:incompletedArr };
-			console.log('incompleted arr: ' + incompletedArr.length);
+			var data = { completedArr, incompletedArr };
+			//console.log('incompleted arr: ' + incompletedArr.length);
 			callback(data);
-		})
-	},
-
-	addNew: function(newItem, callback) {
-		//console.log('new item in model: ' + newItem);
-		orm.insertNewTask(newItem, function(res) {
-			callback(res);
-		})
-	},
-
-	deleteTask: function(id, callback) {
-		orm.deleteTask(id, function(res) {
-			callback(res);
-		})
-	},
-
-	updateTask: function(id, callback) {
-		orm.updateTask(id, function(res) {
-			callback(res)
 		})
 	}
 }
 
-module.exports = tasks;
+module.exports = models;
